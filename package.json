@@ -1,0 +1,20 @@
+{
+  "name": "holydayzer",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "calendario de feriados",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index"
+  },
+  "keywords": [
+    "calendario",
+    "feriados"
+  ],
+  "author": "\"Victor\"",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.3"
+  }
+}
