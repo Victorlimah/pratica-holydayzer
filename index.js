@@ -43,14 +43,21 @@ app.get("/is-today-holiday", (req, res) => {
 
 app.get("/holidays/:mothParam", (req, res) => {
   const mothParam = req.params.mothParam;
+
+  // Verifica se o parametro passado é um número
+  if (isNaN(parseInt(mothParam))) res.send("Você deve digitar um número de mês válido");
+
+  // Verifica se o mês passado é válido ( entre 1 e 12 )
   const mothIsInvalid = parseInt(mothParam) <= 0 || parseInt(mothParam) > 12;
   if (mothIsInvalid) res.send("Não existe mês com este número");
 
+  // Coleta os feriados do mês recebido como parametro
   let response = holidays.filter((holiday) => {
     let moth = holiday.date.split("/")[0];
     return moth === mothParam;
   });
 
+  // Se o tamanho de response for 0, não existe feriado nesse mês
   if (response.length === 0) res.send("Não existe feriados nesse mês");
   res.send(response);
 });
